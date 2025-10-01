@@ -19,6 +19,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
@@ -48,11 +50,28 @@ export const SignInView = () => {
     setPending(true);
 
     authClient.signIn.email(
-      { email: data.email, password: data.password },
+      { email: data.email, password: data.password, callbackURL: "/" },
       {
         onSuccess: () => {
           setPending(false);
           router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocialSignIn = (provider: "google" | "github") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      { provider: provider, callbackURL: "/" },
+      {
+        onSuccess: () => {
+          setPending(false);
         },
         onError: ({ error }) => {
           setPending(false);
@@ -138,7 +157,9 @@ export const SignInView = () => {
                     type="button"
                     className="w-full"
                     disabled={pending}
+                    onClick={() => onSocialSignIn("google")}
                   >
+                    <FaGoogle />
                     Google
                   </Button>
                   <Button
@@ -146,7 +167,9 @@ export const SignInView = () => {
                     type="button"
                     className="w-full"
                     disabled={pending}
+                    onClick={() => onSocialSignIn("github")}
                   >
+                    <FaGithub />
                     Github
                   </Button>
                 </div>

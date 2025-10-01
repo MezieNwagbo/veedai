@@ -21,6 +21,8 @@ import { Input } from "@/components/ui/input";
 
 import Link from "next/link";
 
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
@@ -55,13 +57,34 @@ export const SignUpView = () => {
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     setError(null);
     setPending(true);
-
     authClient.signUp.email(
-      { name: data.name, email: data.email, password: data.password },
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        callbackURL: "/",
+      },
       {
         onSuccess: () => {
           setPending(false);
           router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocialSignIn = (provider: "google" | "github") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      { provider: provider, callbackURL: "/" },
+      {
+        onSuccess: () => {
+          setPending(false);
         },
         onError: ({ error }) => {
           setPending(false);
@@ -186,7 +209,9 @@ export const SignUpView = () => {
                     type="button"
                     className="w-full"
                     disabled={pending}
+                    onClick={() => onSocialSignIn("google")}
                   >
+                    <FaGoogle />
                     Google
                   </Button>
                   <Button
@@ -194,7 +219,9 @@ export const SignUpView = () => {
                     type="button"
                     className="w-full"
                     disabled={pending}
+                    onClick={() => onSocialSignIn("github")}
                   >
+                    <FaGithub />
                     Github
                   </Button>
                 </div>
