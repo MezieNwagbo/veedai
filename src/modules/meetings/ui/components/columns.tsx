@@ -19,8 +19,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Meeting = MeetingGetMany[number];
-
 function formatDuration(seconds: number) {
   return humanizeDuration(seconds * 1000, {
     largest: 2,
