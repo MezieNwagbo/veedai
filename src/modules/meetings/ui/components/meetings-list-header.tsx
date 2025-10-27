@@ -8,7 +8,7 @@ import { PlusIcon } from "lucide-react";
 import { NewMeetingDialog } from "./new-meeting-dialog";
 import MeetingsSearchFilter from "./meetings-search-filter";
 import { StatusFilter } from "./status-filter";
-import { AgentIdFilter } from "@/modules/agents/ui/components/agent-id-filter";
+import { AgentIdFilter } from "@/modules/meetings/ui/components/agent-id-filter";
 import { useMeetingsFilters } from "../../hooks/use-meetings-filters";
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
