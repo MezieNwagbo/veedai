@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🎥 VeedAI
 
-## Getting Started
+VeedAI is a modern video collaboration and AI-powered meeting platform built with Next.js 15, React 19, and Stream Video SDK.
+It allows users to create, join, and manage real-time meetings with AI agents. It has  AI-driven features such as transcription, summarization, and smart video insights.
 
-First, run the development server:
+🚀 Tech Stack
 
-```bash
+Frontend
+
+Next.js 15
+ with Turbopack
+
+React 19
+
+Tailwind CSS 4
+
+Radix UI
+ + Shadcn Components
+
+Lucide React
+ for icons
+
+Backend & Database
+
+Drizzle ORM
+
+Neon Database (Postgres)
+
+tRPC
+ for end-to-end typesafe APIs
+
+Better Auth
+ for authentication
+
+Video & Realtime
+
+Stream Video React SDK
+
+Stream Node SDK
+
+OpenAI Realtime
+ integration for AI-driven experiences
+
+⚙️ Setup & Installation
+1. Clone the repo
+git clone https://github.com/<your-username>/veedai.git
+cd veedai
+
+2. Install dependencies
+pnpm install
+# or
+npm install
+
+3. Configure environment variables
+
+Create a .env file in the root directory and include:
+
+DATABASE_URL=your_neon_connection_url
+OPENAI_API_KEY=your_openai_key
+STREAM_API_KEY=your_stream_key
+STREAM_API_SECRET=your_stream_secret
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+4. Set up the database
+npm run db:push
+
+5. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+App should now be running on http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🧩 Scripts
+Command	Description
+npm run dev	Start the dev server
+npm run build	Build for production (Turbopack)
+npm start	Start the production server
+npm run lint	Run ESLint
+npm run db:push	Push schema changes to the database
+npm run db:studio	Open Drizzle Studio
+🧠 Features
 
-## Learn More
+🔴 Real-time video meetings powered by Stream Video
 
-To learn more about Next.js, take a look at the following resources:
+🤖 AI integration via OpenAI Realtime
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔐 Authentication with Better Auth
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🗃️ Type-safe APIs with tRPC
 
-## Deploy on Vercel
+🧩 Modular UI built with Radix UI + Tailwind CSS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+⚡ Database with Drizzle ORM + Neon Serverless
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+💬 Smooth developer experience with React Query and React Hook Form
+
+🛠️ Project Structure
+src/
+ ├── app/           # Next.js app router
+ ├── components/    # Reusable UI components
+ ├── lib/           # Configs, utils, constants
+ ├── server/        # tRPC routers, Drizzle schema
+ ├── hooks/         # Custom React hooks
+ └── styles/        # Global styles
+
+🤝 Contributing
+
+Contributions are welcome!
+Please fork the repo, create a new branch, and submit a pull request.
+
+📜 License
+
+MIT © Chimezie Nwagbo
+
+🌟 Show your support
+
+If you find this project helpful, give it a ⭐ on GitHub!
